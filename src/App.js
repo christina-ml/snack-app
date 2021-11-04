@@ -35,7 +35,6 @@ class App extends React.Component {
     })
   }
 
-
   render() {
     // destructuring
     const { possibleSnacks, snackIndex, snackCount } = this.state;
