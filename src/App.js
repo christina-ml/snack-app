@@ -46,24 +46,37 @@ class App extends React.Component {
     // destructuring
     const { possibleSnacks, snackIndex, snackCount } = this.state;
 
-    return (
-      <div className="App">
-        <h1>Give Baby Yoda some snacks.</h1>
-        <img src={babyYoda} alt="baby yoda" />
-        <div className="card">
-          <div>
-            Baby Yoda has eaten <span className="snackCount">{snackCount}</span>{" "}
-            snacks.
-          </div>
-          <button onClick={this.changeSnack}>Change snack</button>
-          <button onClick={this.giveSnack}>Give snack</button>
-          <div>
-            Current snack selected:{" "}
-            <strong>{possibleSnacks[snackIndex]}</strong>
+    if(snackCount < 30) {
+      return (
+        <div className="App">
+          <h1>Give Baby Yoda some snacks.</h1>
+          <img src={babyYoda} alt="baby yoda" />
+          <div className="card">
+            <div>
+              Baby Yoda has eaten <span className="snackCount">{snackCount}</span>{" "}
+              snacks.
+            </div>
+            <button onClick={this.changeSnack}>Change snack</button>
+            <button onClick={this.giveSnack}>Give snack</button>
+            <div>
+              Current snack selected:{" "}
+              <strong>{possibleSnacks[snackIndex]}</strong>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="App">
+          <h1>Baby Yoda is full. Good job!</h1>
+          <img src="" alt="baby yoda" />
+          <div className="card">
+            <div>Come back another time.</div>
+            <button>Start over</button>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
