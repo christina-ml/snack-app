@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import babyYoda from "./images/cookieGrogu.jpeg";
 
 class App extends React.Component {
   constructor(){
@@ -7,6 +8,14 @@ class App extends React.Component {
 
     this.state = {
       snackCount: 0,
+      possibleSnacks: [
+        'ice spider',
+        'frog',
+        'alien frog eggs',
+        'blue cookie',
+        'cup of broth'
+      ],
+      snackIndex: 0,
     }
   }
 
@@ -16,15 +25,38 @@ class App extends React.Component {
     })
   }
 
+  changeSnack = () => {
+    // destructuring
+    const { possibleSnacks, snackIndex } = this.state;
+    const nextIndex = (snackIndex + 1) % possibleSnacks.length;
+
+    this.setState({
+      snackIndex: nextIndex,
+    })
+  }
+
+
   render() {
+    // destructuring
+    const { possibleSnacks, snackIndex, snackCount } = this.state;
+
     return (
-    <div className="App">
-      <h1>Give Baby Yoda some snack.</h1>
-      <img src="https://img.huffingtonpost.com/asset/5fb802c62900005b61c6c565.png?ops=1778_1000" 
-      alt="baby yoda" />
-      <button onClick={ this.giveSnack }>Give snack</button>
-      <div>Baby Yoda has eaten { this.state.snackCount } snacks.</div>
-    </div>
+      <div className="App">
+        <h1>Give Baby Yoda some snacks.</h1>
+        <img src={babyYoda} alt="baby yoda" />
+        <div className="card">
+          <div>
+            Baby Yoda has eaten <span className="snackCount">{snackCount}</span>{" "}
+            snacks.
+          </div>
+          <button onClick={this.changeSnack}>Change snack</button>
+          <button onClick={this.giveSnack}>Give snack</button>
+          <div>
+            Current snack selected:{" "}
+            <strong>{possibleSnacks[snackIndex]}</strong>
+          </div>
+        </div>
+      </div>
     );
   }
 }
