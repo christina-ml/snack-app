@@ -21,13 +21,13 @@ class App extends React.Component {
 
   giveSnack = () => {
     // destructuring - code getting long
-    const { possibleSnacks, snackIndex } = this.state;
+    const { possibleSnacks, snackIndex, snackCount } = this.state;
     const currentSnack = possibleSnacks[snackIndex];
     if(currentSnack === 'ice spider' || currentSnack === 'alien frog eggs'){
       alert("We shouldn't let Grogu eat that... let's find a new snack.");
     } else {
       this.setState({
-        snackCount: this.state.snackCount + 1,
+        snackCount: snackCount + 1,
       });
     }
   }
