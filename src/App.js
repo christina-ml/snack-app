@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import babyYoda from "./images/cookieGrogu.jpeg";
+import happyYoda from "./images/happyGrogu.jpeg";
 
 class App extends React.Component {
   constructor(){
@@ -75,7 +76,7 @@ class App extends React.Component {
       return (
         <div className="App">
           <h1>Baby Yoda is full. Good job!</h1>
-          <img src="" alt="baby yoda" />
+          <img src={happyYoda} alt="baby yoda" />
           <div className="card">
             <div>Come back another time.</div>
             <button onClick={ this.handleReset }>Start over</button>
