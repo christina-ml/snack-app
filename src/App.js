@@ -42,6 +42,12 @@ class App extends React.Component {
     })
   }
 
+  handleReset = () => {
+    this.setState({
+      snackCount: 0,
+    })
+  }
+
   render() {
     // destructuring
     const { possibleSnacks, snackIndex, snackCount } = this.state;
@@ -72,7 +78,7 @@ class App extends React.Component {
           <img src="" alt="baby yoda" />
           <div className="card">
             <div>Come back another time.</div>
-            <button>Start over</button>
+            <button onClick={ this.handleReset }>Start over</button>
           </div>
         </div>
       )
